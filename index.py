@@ -8,23 +8,22 @@ for cur, dirs, files in os.walk('./'):
     if cur.startswith('.'):
         continue
 
+    content = '# > ' + cur + '\n'
+
     if cur:
         cur += '/'
-
-    content = ''
 
     for d in dirs:
         if d.startswith('.'):
             continue
-        d = cur + d
-        content += URL_TEMPLATE % (d, d + '/index.html')
+        content += URL_TEMPLATE % (d, d)
 
     for f in files:
         if not f.endswith('.md') or 'index' in f:
             continue
 
-        f = cur + f[:-3]
-        content += URL_TEMPLATE % (f, f + '.html')
+        f = f[:-3]
+        content += URL_TEMPLATE % (f, f)
 
     print content
     with open(cur + 'index.md', 'w') as f:
