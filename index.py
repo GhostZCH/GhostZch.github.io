@@ -2,13 +2,14 @@ import os
 
 URL_TEMPLATE = '+ [%s](%s)\n'
 
+host = open('CNAME').readline().strip()
 
 for cur, dirs, files in os.walk('./'):
     cur = cur.replace('./', '')
     if cur.startswith('.'):
         continue
 
-    content = '# > ' + cur + '\n'
+    content = '## [' + host + '/' + cur + '](' + host + '/' + cur + ')\n'
 
     if cur:
         cur += '/'
