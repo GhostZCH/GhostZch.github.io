@@ -1,3 +1,4 @@
 ## [www.zhaoch.top/](www.zhaoch.top/)
-+ [code](code)
-+ [os](os)
++ [编程](编程)
++ [杂文](杂文)
++ [操作系统](操作系统)
