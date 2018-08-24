@@ -22,8 +22,8 @@ def get_lastest():
             all.append((mtime, f, fullname))
 
     content = '## Lastest \n'
-    for i in sorted(all, key=lambda x: x[0])[:_LASTEST_LIMIT]:
-        mtime = datetime.fromtimestamp(i[0]).strftime('%D')
+    for i in sorted(all, key=lambda x: x[0], reverse=True)[:_LASTEST_LIMIT]:
+        mtime = datetime.fromtimestamp(i[0]).strftime('%Y-%m-%d')
         name = i[1][:-3] + " " + mtime
         content += '+ ' + _URL_TEMPLATE % (name, i[2]) + '\n'
 
