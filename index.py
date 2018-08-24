@@ -31,7 +31,7 @@ def get_lastest():
 
 
 def get_navegater(host, path):
-    content = '## ' + _URL_TEMPLATE % (host, host)
+    content = '## ' + _URL_TEMPLATE % (host, 'http://' + host)
 
     cur = 'http://' + host
     for p in path.split('/'):
