@@ -31,9 +31,9 @@ def get_lastest():
 
 
 def get_navegater(host, path):
-    content = '## ' + _URL_TEMPLATE % (host, host) + '\n'
+    content = '## ' + _URL_TEMPLATE % (host, host)
 
-    cur = host
+    cur = 'http://' + host
     for p in path.split('/'):
         if p:
             cur += '/' + p
