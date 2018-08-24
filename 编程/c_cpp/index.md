@@ -1,4 +1,5 @@
-## [www.zhaoch.top/编程/c_cpp](www.zhaoch.top/编程/c_cpp)
+## [www.zhaoch.top](www.zhaoch.top)
+ > [编程](www.zhaoch.top/编程) > [c_cpp](www.zhaoch.top/编程/c_cpp)
 + [gcc常用参数](gcc常用参数)
 + [多进程相关函数](多进程相关函数)
 + [内存申请](内存申请)
