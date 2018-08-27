@@ -2,12 +2,13 @@ import os
 from datetime import datetime
 
 _URL_TEMPLATE = '[%s](%s)'
-_LASTEST_LIMIT = 20
+_LATEST_LIMIT = 20
 
 _host = open('CNAME').readline().strip()
 
-def get_lastest():
-    all = []
+
+def get_latest():
+    pages = []
     for cur, _, files in os.walk('./'):
         cur = cur[2:]
         if cur.startswith('.'):
@@ -18,19 +19,19 @@ def get_lastest():
                 continue
 
             fullname = cur + '/' + f
-            mtime = os.path.getmtime(fullname)
-            all.append((mtime, f, fullname))
+            edit_time = os.path.getmtime(fullname)
+            pages.append((edit_time, f, fullname))
 
-    content = '## Lastest \n'
-    for i in sorted(all, key=lambda x: x[0], reverse=True)[:_LASTEST_LIMIT]:
-        mtime = datetime.fromtimestamp(i[0]).strftime('%Y-%m-%d')
-        name = i[1][:-3] + " " + mtime
-        content += '+ ' + _URL_TEMPLATE % (name, i[2]) + '\n'
+    content = '## Latest \n|Title|Edit Time|\n|-|-|\n'
+    for i in sorted(pages, key=lambda x: x[0], reverse=True)[:_LATEST_LIMIT]:
+        edit_time = datetime.fromtimestamp(i[0]).strftime('%Y-%m-%d')
+        name = i[1][:-3]
+        content += '|' + _URL_TEMPLATE % (name, i[2]) + "|" + edit_time + '|\n'
 
     return content
 
 
-def get_navegater(host, path):
+def get_navigator(host, path):
     content = '## ' + _URL_TEMPLATE % (host, 'http://' + host)
 
     cur = 'http://' + host
@@ -48,7 +49,7 @@ def get_index_files():
         if cur.startswith('.'):
             continue
 
-        content = get_navegater(_host, cur)
+        content = get_navigator(_host, cur)
 
         if cur:
             cur += '/'
@@ -68,11 +69,16 @@ def get_index_files():
         with open(cur + 'index.md', 'w') as f:
             f.write(content)
 
-get_index_files()
 
-with open('index.md', 'a') as f:
-    f.write(get_lastest())
+def main():
+    get_index_files()
 
-with open('index.md', 'a') as f:
-    with open('index.mdx') as src:
-        f.write(src.read())
+    with open('index.md', 'a') as f:
+        f.write(get_latest())
+
+    with open('index.md', 'a') as f:
+        with open('index.mdx') as src:
+            f.write(src.read())
+
+if __name__ == '__main__':
+    main()
