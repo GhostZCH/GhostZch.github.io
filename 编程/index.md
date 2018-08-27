@@ -1,6 +1,6 @@
 ## [www.zhaoch.top](http://www.zhaoch.top) > [编程](http://www.zhaoch.top/编程)
-+ [Ｃ#](Ｃ#)
 + [c_cpp](c_cpp)
++ [C#](C#)
 + [python](python)
 + [matlab](matlab)
 + [lua](lua)

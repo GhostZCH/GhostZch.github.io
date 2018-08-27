@@ -22,11 +22,11 @@ def get_latest():
             edit_time = os.path.getmtime(fullname)
             pages.append((edit_time, f, fullname))
 
-    content = '## Latest \n|Title|Edit Time|\n|-|-|\n'
+    content = '## Latest \n'
     for i in sorted(pages, key=lambda x: x[0], reverse=True)[:_LATEST_LIMIT]:
-        edit_time = datetime.fromtimestamp(i[0]).strftime('%Y-%m-%d')
+        edit_time = datetime.fromtimestamp(i[0]).strftime('%Y-%m-%d %H:%M:%S')
         name = i[1][:-3]
-        content += '|' + _URL_TEMPLATE % (name, i[2]) + "|" + edit_time + '|\n'
+        content += '+ ' + _URL_TEMPLATE % (name, i[2]) + " (" + edit_time + ')\n'
 
     return content
 
