@@ -28,7 +28,7 @@ def get_latest():
         name = i[1][:-3]
         content += '|' + edit_time + '|' + _URL_TEMPLATE % (name, i[2]) + '|\n'
 
-    return content
+    return content + '\n'
 
 
 def get_navigator(host, path):
