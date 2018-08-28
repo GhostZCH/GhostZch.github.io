@@ -1,4 +1,4 @@
-##　Hornet (开发中)
+## Hornet (开发中)
 
 https://github.com/GhostZCH/Hornet
 
