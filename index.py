@@ -67,17 +67,21 @@ def get_index_files():
             content += '+ ' + _URL_TEMPLATE % (f, f) + '\n'
 
         with open(cur + 'index.md', 'w') as f:
-            f.write(content)
+            f.write(content + '\n')
 
 
 def main():
     get_index_files()
 
     with open('index.md', 'a') as f:
+        with open('highlight.mdx') as src:
+            f.write(src.read())
+
+    with open('index.md', 'a') as f:
         f.write(get_latest())
 
     with open('index.md', 'a') as f:
-        with open('index.mdx') as src:
+        with open('end.mdx') as src:
             f.write(src.read())
 
 if __name__ == '__main__':
