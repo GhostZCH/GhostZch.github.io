@@ -126,3 +126,11 @@ qps在190k, 与之前做过c和python的测试，结果如下
 |c + epoll | ≈180k |
 |python + epoll | ≈10k|
 |python + gevent | ≈10k|
+
+TODO　其他三个测试代码
+
+### 结论
+
++ go 不包含业务的情况下速度接近c，考虑到开发速度，以后优先考虑用go开发
++ epoll和协程速度差不多，猜想协程处理socket的时候也是用epoll实现的
+
