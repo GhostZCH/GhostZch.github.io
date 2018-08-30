@@ -31,6 +31,12 @@
 |2018-08-29 09:26:00|[内存申请](编程/c_cpp/内存申请.md)|
 |2018-08-29 09:26:00|[sizeof](编程/c_cpp/sizeof.md)|
 
+## highlight
+
++ [常用命令备忘](操作系统/linux/常用命令备忘.md)
++ [C++坦克大战](项目/C++坦克大战.md)
++ [不停服更新二进制文件](操作系统/linux/不停服更新二进制文件.md)
+
 ## Source & Discuss
 
 + View Source on GitHub [GhostZch.github.io](https://github.com/GhostZCH/GhostZch.github.io/)
