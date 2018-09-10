@@ -1,7 +1,3 @@
-## c++俄罗斯方块
-
-[www.zhaoch.top](http://www.zhaoch.top) > [项目](http://www.zhaoch.top/项目)
-
 
 ## c++ mfc开发的俄罗斯方块
 

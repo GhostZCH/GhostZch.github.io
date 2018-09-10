@@ -1,7 +1,3 @@
-## c编程注意事项
-
-[www.zhaoch.top](http://www.zhaoch.top) > [编程](http://www.zhaoch.top/编程) > [c_cpp](http://www.zhaoch.top/编程/c_cpp)
-
 ## 列了一下c编程的注意事项，有些时自己总结的，有些是一些公司的规范
 
 ### 空指针检查

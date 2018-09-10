@@ -1,7 +1,3 @@
-## dlopen的一些记录
-
-[www.zhaoch.top](http://www.zhaoch.top) > [编程](http://www.zhaoch.top/编程) > [c_cpp](http://www.zhaoch.top/编程/c_cpp)
-
 ## 测试dlopen函数的功能，主要时符号加载
 
 ### 设置如下4个文件

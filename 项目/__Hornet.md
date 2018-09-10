@@ -1,7 +1,3 @@
-## Hornet
-
-[www.zhaoch.top](http://www.zhaoch.top) > [项目](http://www.zhaoch.top/项目)
-
 ## Hornet (开发中)
 
 https://github.com/GhostZCH/Hornet

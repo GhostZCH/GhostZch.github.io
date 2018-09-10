@@ -1,9 +1,5 @@
 ## container_of
 
-[www.zhaoch.top](http://www.zhaoch.top) > [编程](http://www.zhaoch.top/编程) > [c_cpp](http://www.zhaoch.top/编程/c_cpp)
-
-## container_of
-
 已知结构体某个元素的地址，获取这个结构体起始地址。定义如下
 
     /**

@@ -1,7 +1,3 @@
-## C++坦克大战
-
-[www.zhaoch.top](http://www.zhaoch.top) > [项目](http://www.zhaoch.top/项目)
-
 # c++写的坦克大战
 
 代码:

@@ -1,9 +1,5 @@
 ## sizeof
 
-[www.zhaoch.top](http://www.zhaoch.top) > [编程](http://www.zhaoch.top/编程) > [c_cpp](http://www.zhaoch.top/编程/c_cpp)
-
-## sizeof
-
 ###　字符串长度计算
 
 	sizeof("123456") // 包含'\0'的长度7

@@ -1,7 +1,3 @@
-## python突破GIL
-
-[www.zhaoch.top](http://www.zhaoch.top) > [编程](http://www.zhaoch.top/编程) > [python](http://www.zhaoch.top/编程/python)
-
 ## python 可以通过调用c模块突破GIL的限制
 
 这里以cffi为例说明

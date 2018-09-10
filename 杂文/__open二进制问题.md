@@ -1,7 +1,3 @@
-## open二进制问题
-
-[www.zhaoch.top](http://www.zhaoch.top) > [杂文](http://www.zhaoch.top/杂文)
-
 ## 打开文件w,r, 与wb,rb的区别
 
 与具体语言无关，与操作系统相关，以下来自ubuntu的`man fopen`的内容:

@@ -32,7 +32,7 @@ def get_latest():
 
 
 def get_navigator(host, path):
-    content = '## ' + _URL_TEMPLATE % (host, 'http://' + host)
+    content = _URL_TEMPLATE % (host, 'http://' + host)
 
     cur = 'http://' + host
     for p in path.split('/'):
@@ -43,13 +43,14 @@ def get_navigator(host, path):
     return content + '\n'
 
 
-def get_index_files():
+def get_index_and_release_files():
     for cur, dirs, files in os.walk('./'):
         cur = cur.replace('./', '')
         if cur.startswith('.'):
             continue
 
-        content = get_navigator(_host, cur)
+        navigator = get_navigator(_host, cur)
+        content = "## " + navigator
 
         if cur:
             cur += '/'
@@ -60,18 +61,23 @@ def get_index_files():
             content += '+ ' + _URL_TEMPLATE % (d, d) + '\n'
 
         for f in files:
-            if not f.endswith('.md') or 'index' in f:
+            if not f.startswith('__') or not f.endswith('.md') or 'index' in f:
                 continue
 
-            f = f[:-3]
+            f = f[2:-3]
             content += '+ ' + _URL_TEMPLATE % (f, f) + '\n'
+
+            with open(cur + f + '.md', 'w') as tar:
+                tar.write('## ' + f + '\n\n' + navigator + '\n')
+                with open(cur + '__' + f + '.md') as src:
+                    tar.write(src.read())
 
         with open(cur + 'index.md', 'w') as f:
             f.write(content + '\n')
 
 
 def main():
-    get_index_files()
+    get_index_and_release_files()
 
     with open('index.md', 'a') as f:
         with open('highlight.mdx') as src:

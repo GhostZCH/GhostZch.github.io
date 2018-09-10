@@ -1,9 +1,5 @@
 ## robots协议
 
-[www.zhaoch.top](http://www.zhaoch.top) > [杂文](http://www.zhaoch.top/杂文)
-
-## robots协议
-
 看下博客的访问日志，偶尔发现有些方位时robots.txt, 原来和爬虫有关，顺手查了下，做个记录。
 
 主要功能时通过在根目录下增加一个robots.txt文件，标示那些路径可以访问，哪些不可以，支持部分通配符

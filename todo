@@ -31,6 +31,7 @@ python
 learn-python
 python-test的内容
 python 突破GIL
+python 常用库
 
 linux
 0-copy
@@ -39,6 +40,9 @@ sys-wait-load
 常用命令备忘
 epoll用法
 海量小文件问题
+mtr, ip
+tcpdump
+perf
 
 c题提交
 
