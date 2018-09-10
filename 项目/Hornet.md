@@ -155,3 +155,9 @@ tag可以灵活使用，建议至少选择一个作为文件扩展名（例如: 
 + 大文件单独处理
 + http代码
 + 测试
+
+## The End
+
++ My [github location](https://github.com/GhostZCH/)
++ View Source of this website [GhostZch.github.io](https://github.com/GhostZCH/GhostZch.github.io/)
++ Commit [issues](https://github.com/GhostZCH/GhostZch.github.io/issues) to discuss with me and others

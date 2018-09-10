@@ -20,3 +20,8 @@
 参考：
 
 https://baike.baidu.com/item/robots协议/2483797?fr=aladdin&fromid=9518761&fromtitle=robots.txt
+## The End
+
++ My [github location](https://github.com/GhostZCH/)
++ View Source of this website [GhostZch.github.io](https://github.com/GhostZCH/GhostZch.github.io/)
++ Commit [issues](https://github.com/GhostZCH/GhostZch.github.io/issues) to discuss with me and others

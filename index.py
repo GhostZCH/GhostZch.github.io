@@ -71,6 +71,10 @@ def get_index_and_release_files():
                 tar.write('## ' + f + '\n\n' + navigator + '\n')
                 with open(cur + '__' + f + '.md') as src:
                     tar.write(src.read())
+                tar.write("\n## The End\n\n")
+                tar.write("+ My [github location](https://github.com/GhostZCH/)\n")
+                tar.write("+ View Source of this website [GhostZch.github.io](https://github.com/GhostZCH/GhostZch.github.io/)\n")
+                tar.write("+ Commit [issues](https://github.com/GhostZCH/GhostZch.github.io/issues) to discuss with me and others\n")
 
         with open(cur + 'index.md', 'w') as f:
             f.write(content + '\n')

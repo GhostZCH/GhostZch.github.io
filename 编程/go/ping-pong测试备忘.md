@@ -136,3 +136,8 @@ qps在190k, 与之前做过c和python的测试，结果如下
 |python + gevent | ≈10k|
 
 在不处理业务的情况下go的性能与c无异，通过控制程序的实现，在业务中达到ｃ/c++ 50%以上的性能是可以的。考虑到开发速度以及提供库的易用性上，后续开发可以考虑使用go代替c/c++作为骨架语言，一些系统接口可以通过ｃ封装提供go调用。
+## The End
+
++ My [github location](https://github.com/GhostZCH/)
++ View Source of this website [GhostZch.github.io](https://github.com/GhostZCH/GhostZch.github.io/)
++ Commit [issues](https://github.com/GhostZCH/GhostZch.github.io/issues) to discuss with me and others

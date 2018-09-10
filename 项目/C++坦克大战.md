@@ -422,3 +422,8 @@ MFC
 如果以后需要更多类型的坦克只需要添加枚举，添加坦克类，对Factory的switch家一项即可，不影响其他部分的代码。当然在我这个微小的系统中，工厂模式的效果可能并不明显，但如果在初始化实例时还有复杂的操作时，这个优势就很明显了。封装，减少耦合是提高代码稳定性的重要途径。
 
 剩下的类就只有Gird了，这各类的意思是游戏区域，是一个逻辑概念，并不是用户在界面上看到的显示区域，显示区域可达可小，取决于View的设置，与底层逻辑无关。
+## The End
+
++ My [github location](https://github.com/GhostZCH/)
++ View Source of this website [GhostZch.github.io](https://github.com/GhostZCH/GhostZch.github.io/)
++ Commit [issues](https://github.com/GhostZCH/GhostZch.github.io/issues) to discuss with me and others
