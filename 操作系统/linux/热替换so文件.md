@@ -2,6 +2,11 @@
 
 [www.zhaoch.top](http://www.zhaoch.top) > [操作系统](http://www.zhaoch.top/操作系统) > [linux](http://www.zhaoch.top/操作系统/linux)
 
+
+![img](adf525e6e76b6bd7a2beef5a8aef7bf9.jpg)
+
+发现nginx的动态模块无法热更新，于是研究了一下相关的问题。
+
 ## 代码准备
 
 reload.c, 启动文件，用来模拟正在运行的程序，不断重建加载so.so文件
