@@ -15,17 +15,18 @@ def get_latest():
             continue
 
         for f in files:
-            if not f.endswith('.md') or 'index' in f:
+            if not f.startswith('__') or not f.endswith('.md') or 'index' in f:
                 continue
 
+            
             fullname = cur + '/' + f
             edit_time = os.path.getmtime(fullname)
-            pages.append((edit_time, f, fullname))
+            pages.append((edit_time, f,  cur + '/' + f[2:]))
 
     content = '## Latest \n\n|Time|Title|\n|--|--|\n'
     for i in sorted(pages, key=lambda x: x[0], reverse=True)[:_LATEST_LIMIT]:
         edit_time = datetime.fromtimestamp(i[0]).strftime('%Y-%m-%d %H:%M:%S')
-        name = i[1][:-3]
+        name = i[1][2:-3]
         content += '|' + edit_time + '|' + _URL_TEMPLATE % (name, i[2]) + '|\n'
 
     return content + '\n'
