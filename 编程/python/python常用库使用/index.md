@@ -5,5 +5,6 @@
 + [signal](signal)
 + [zstd](zstd)
 + [socket](socket)
++ [zmq](zmq)
 + [gc](gc)
 
