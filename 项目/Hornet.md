@@ -109,7 +109,7 @@ master-worker
 
 #### 总体流程
 
-![start-end](https://github.com/GhostZCH/hornet/blob/master/start-end.png)
+![start-end](https://github.com/GhostZCH/hornet/blob/master/start-end.png?raw=true)
 
 #### 请求流程
 
