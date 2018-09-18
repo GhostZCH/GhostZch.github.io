@@ -4,7 +4,7 @@
 
 # Hornet (暂停开发)
 
-Hornet是一个用C++开发针对CDN的轻量级缓存引擎。
+Hornet是一个用C++开发针对CDN的轻量级缓存引擎，[github地址](https://github.com/GhostZCH/hornet)。
 
 ## 状态
 
@@ -109,9 +109,11 @@ master-worker
 
 #### 总体流程
 
-![start-end](https://github.com/GhostZCH/hornet/blob/master/start-end.png?raw=true)
+![总体流程](https://github.com/GhostZCH/hornet/blob/master/start-end.png?raw=true)
 
-#### 请求流程
+#### 事件处理
+
+![事件处理](https://github.com/GhostZCH/hornet/blob/master/process.png?raw=true)
 
 ## Q & A
 
@@ -146,13 +148,11 @@ tag可以灵活使用，建议至少选择一个作为文件扩展名（例如: 
 
 利用trie树进行目录删除是一个很好的功能，只是要增加一定量的代码，做为本项目的后续改进方向之一。tags有正则和目录删除不具有的优势，后续将继续保留。
 
-## 测试结果
-
 ## TODO
 
 - [ ] 架构图
 - [ ] 类图
-- [ ] 流程图
+
 
 ## The End
 
