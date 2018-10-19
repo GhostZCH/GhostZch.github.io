@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get install gconf-service gconf-service-backend libgconf-2-4 gconf2-common git ipython zsh wget curl vim htop ifstat iostat wine tree terminator make cmake python-dev code
+sudo apt-get install gconf-service gconf-service-backend net-tools libgconf-2-4 gconf2-common git ipython zsh wget curl vim htop ifstat iostat wine tree terminator make cmake linux-cloud-tools-generic linux-tools-generic linux-tools-common python-dev code jq
 sudo apt-get upgrade
 
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
