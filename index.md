@@ -19,6 +19,7 @@
 
 |Time|Title|
 |--|--|
+|2018-12-03 09:54:56|[waitpid](操作系统/linux/waitpid.md)|
 |2018-11-14 12:55:30|[通过_dev_shm进行内存共享](操作系统/linux/通过_dev_shm进行内存共享.md)|
 |2018-10-31 14:07:49|[常用命令备忘](操作系统/linux/常用命令备忘.md)|
 |2018-10-19 09:28:26|[setup](杂文/setup.md)|
@@ -38,7 +39,6 @@
 |2018-09-20 18:09:53|[sizeof](编程/c_cpp/sizeof.md)|
 |2018-09-20 18:09:53|[dlopen的一些记录](编程/c_cpp/dlopen的一些记录.md)|
 |2018-09-20 18:09:53|[文件锁](编程/c_cpp/文件锁.md)|
-|2018-09-20 18:09:53|[offsetof](编程/c_cpp/offsetof.md)|
 
 ## Source & Discuss & email
 
