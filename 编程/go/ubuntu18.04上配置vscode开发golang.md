@@ -1,4 +1,4 @@
-## ubuntu18.04上配置vscode
+## ubuntu18.04上配置vscode开发golang
 
 [www.zhaoch.top](http://www.zhaoch.top) > [编程](http://www.zhaoch.top/编程) > [go](http://www.zhaoch.top/编程/go)
 

@@ -19,7 +19,7 @@
 
 |Time|Title|
 |--|--|
-|2019-02-03 22:04:56|[ubuntu18.04上配置vscode](编程/go/ubuntu18.04上配置vscode.md)|
+|2019-02-03 22:04:56|[ubuntu18.04上配置vscode开发golang](编程/go/ubuntu18.04上配置vscode开发golang.md)|
 |2019-02-02 11:49:30|[python的gc](编程/python/python的gc.md)|
 |2019-02-02 11:49:30|[python突破GIL](编程/python/python突破GIL.md)|
 |2019-02-02 11:49:30|[gz](编程/python/python常用库使用/gz.md)|
