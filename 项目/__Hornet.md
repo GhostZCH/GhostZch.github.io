@@ -1,13 +1,30 @@
-# Hornet
+# [Hornet](https://github.com/GhostZCH/hornet)
 
-[Hornet](https://github.com/GhostZCH/hornet)是一个针对CDN的轻量级HTTP缓存引擎。在生产环境和测试环境上使用和测试了数种缓存引擎后，发现已有的成品都有一些不能满足需求的地方（见附表）。曾经看过一个30只黄蜂屠杀数万只蜜蜂的视频，印象颇深，于是为程序取名hornet。也标明本程序的设计思想：敏捷，高效，迅猛，集群。
+![Hornet](https://github.com/GhostZCH/hornet/blob/master/docs/hornet.png)
+
+该项目是一个针对CDN的轻量级HTTP缓存引擎。是针对现有开源HTTP缓存引擎面对的问题，本着轻、快、集群化和便于二次开发的原则开发的新缓存引擎。
+
+## 背景
+
+在生产环境和测试环境上使用和测试了多种缓存引擎后，发现已有的成品都有些不如人意之处（详见下表）。于是自己动手开发新引擎，希望新的引擎能够“灵巧迅猛，群起而战”，于是便命名为Hornet(黄蜂)。
+
+|引擎|优点|缺点|
+|--|--|--|
+|proxy-cache(nginx)|与nginx一体，方便在nginx内操作|为每一个key分配一个文件，产生大量小文件，不适合大规模使用|
+|varnish| 性能好|重启后会丢失已有的缓存信息，不支持集群|
+|squid| http支持较好 | 架构老旧，不支持多核，性能较差，不支持集群 |
+|traffic server| 性能高，功能全 | 代码量惊人，没有二次开发的可能性，不支持集群|
+|redis/memcached| 性能高 | 仅支持内存缓存，缓存量太小|
+|其他支持kv的数据库| 可靠性高，技术成熟 | 需要额外设置过期时间或者容量有限，通常性能不高。大多数据库都考虑读写均衡，但是缓存需要的是极高的读性能写性能要求较低|
+
 
 ## 特性
 
-+ 足够轻，总代码量控制在3k以内，每一个功能都经过反复推敲， 力图用最简洁的代码实现最实用的功能。比起大而全，短小精干，便于测试维护和二次开发才是本程序追求的目的。
-+ 足够快，希望可以在一个普通的服务器上达到和已有知名程序相同数量级的缓存读取速度，支持多级缓存（mem, ssd, hdd）。
++ 足够轻，总代码量控制在3k以内，每一个功能都经过反复推敲，力图用最简洁的代码实现最实用的功能。比起大而全，短小精干，便于测试维护才是本程序追求的目的
++ 足够快，希望可以在一个普通的服务器上达到和已有知名程序相同数量级的缓存读取速度，支持多级缓存（mem, ssd, hdd）
++ 便于二次开发，任何程序无法适应企业级的生产环境，与其追加大量代码，不如给出清晰简易的框架，方便使用者添加自己中意的功能
 + 集群部署，在单机部署的基础上实现两种集群部署方式方便具体场景使用，通过udp多播自动组网，无需人工干预
-+ 功能新颖，支持多种方式的快速缓存删除方式（regex，mask,tag,group等）, 较少的代码意味着可以便利的添加新的功能
++ 功能新颖，支持多级缓存的缓和和单独使用，支持多种方式的快速缓存删除方式（regex，mask,tag,group等）, 较少的代码意味着可以便利的添加新的功能
 
 
 ## 应用场景
@@ -22,8 +39,11 @@
 hornet有两种启动模式，cache和proxy。//TODO 附图
 
 + 单机部署，最简易的方式
-+ 客户端做负载均衡，多个hornet以cache模式启动，通过udp多播广播自己的信息，客户端（例如nginx）根据业务逻辑，控制每个访问
-+ 代理模式，以proxy和cache模式启动数个hornet，由proxy模式的hornet做负载均衡和资源分布，客户端只有连接上任意一个proxy都可以使用服务
++ 使用者做负载均衡，多个hornet以cache模式启动，通过udp多播广播自己的服务地址，客户端（例如nginx）根据业务逻辑，控制每个访问具体使用哪个hornet,一般简易使用一致性hash
+![](https://github.com/GhostZCH/hornet/blob/master/docs/client-balance.png)
++ 代理模式，以proxy和cache模式启动数个hornet，由proxy模式的hornet做负载均衡和资源分布，客户端只有连接上任意一个proxy都可以使用服务。我们建议在proxy外使用lvs进行负载均衡对外提供单一的服务地址方便使用，但是不必须。
+![](https://github.com/GhostZCH/hornet/blob/master/docs/proxy-balance.png)
++ 当然，以上只是建议，你也可以自己设计更好的部署方式
 
 ## API
 
@@ -75,6 +95,7 @@ hornet有两种启动模式，cache和proxy。//TODO 附图
 
 ### 配置文件
 
+    # 通用配置
     common.log.path: /tmp/message
     common.log.level: info
     common.accesslog.path: /tmp/access
@@ -85,20 +106,24 @@ hornet有两种启动模式，cache和proxy。//TODO 附图
     common.http.body.bufsize: 65536
     common.heartbeat.addr: 224.0.0.100:3300
 
-    cache.addr: 127.0.0.1:1100
-    cache.heartbeat_ms: 500
-    cache.hdd.meta: /home/hdd/hornet/meta
-    cache.hdd.path: /home/hdd/hornet/
-    cache.hdd.cap: 10240000
-    cache.hdd.blocksize: 1024000
-    cache.ssd.meta: /home/ssd/hornet/meta
-    cache.ssd.path: /home/ssd/hornet/
-    cache.ssd.cap: 10240000
-    cache.ssd.blocksize: 1024000
+    # 缓存配置
     cache.mem.meta: /dev/shm/hornet/meta
     cache.mem.path: /dev/shm/hornet/
     cache.mem.cap: 10240000
     cache.mem.blocksize: 1024000
+
+    cache.ssd.meta: /home/ssd/hornet/meta
+    cache.ssd.path: /home/ssd/hornet/
+    cache.ssd.cap: 10240000
+    cache.ssd.blocksize: 1024000
+
+    cache.hdd.meta: /home/hdd/hornet/meta
+    cache.hdd.path: /home/hdd/hornet/
+    cache.hdd.cap: 10240000
+    cache.hdd.blocksize: 1024000
+
+    cache.addr: 127.0.0.1:1100
+    cache.heartbeat_ms: 500
     cache.range_block: 262144
     cache.http.header.discard:
         - Host
@@ -108,6 +133,7 @@ hornet有两种启动模式，cache和proxy。//TODO 附图
         - Hornet-Raw-Key
         - Hornet-Group
 
+    # 代理配置
     proxy.fault_ms: 2000
     proxy.addr: 127.0.0.1:2200
     proxy.keepalive.count: 10
@@ -117,6 +143,10 @@ hornet有两种启动模式，cache和proxy。//TODO 附图
 ## 设计
 
 //TODO
+
+### 启动流程
+
+![](https://github.com/GhostZCH/hornet/blob/master/docs/start-end.png)
 
 ### 文件系统
 
@@ -128,19 +158,12 @@ hornet有两种启动模式，cache和proxy。//TODO 附图
 + 超过文件大小限制的单独缓存文件
 + 顺序写入，写满一个文件后，打开新文件
 
-## 附表
+## 技术路线
 
-各种
-
-|引擎|优点|缺点|
-|--|--|--|
-|proxy-cache(nginx)|与nginx一体，方便在nginx内操作|为每一个key分配一个文件，产生大量小文件，不适合大规模使用|
-|varnish| 性能好|重启后会丢失已有的缓存信息|
-|squid| http支持较好 | 架构老旧，不支持多核，性能较差 |
-|traffic server| 性能高，功能全 | 代码量惊人，没有二次开发的可能性|
-|redis/memcached| 性能高 | 仅支持内存缓存，缓存量太小|
-|其他支持kv的数据库| - | 需要额外设置过期时间或者容量有限，或者性能不高（大多数据库都考虑读写均衡，但是缓存需要的是极高的读性能写性能要求较低）|
-
++ 测试完善现有功能
++ range缓存和
++ 热点数据分散
++ TODO
 
 ## Q & A
 
