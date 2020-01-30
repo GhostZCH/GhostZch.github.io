@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 
 _URL_TEMPLATE = '[%s](%s)'
-_LATEST_LIMIT = 20
+_LATEST_LIMIT = 50
 
 _host = open('CNAME').readline().strip()
 
@@ -25,9 +25,9 @@ def get_latest():
 
     content = '## Latest \n\n|Time|Title|\n|--|--|\n'
     for i in sorted(pages, key=lambda x: x[0], reverse=True)[:_LATEST_LIMIT]:
-        edit_time = datetime.fromtimestamp(i[0]).strftime('%Y-%m-%d %H:%M:%S')
+        edit_time = datetime.fromtimestamp(i[0]).strftime('%Y-%m-%d')
         name = i[1][2:-3]
-        content += '|' + edit_time + '|' + _URL_TEMPLATE % (name, i[2]) + '|\n'
+        content += '|' + _URL_TEMPLATE % (name, i[2]) + '|' + edit_time + '|\n'
 
     return content + '\n'
 
