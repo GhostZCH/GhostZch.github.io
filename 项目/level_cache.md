@@ -286,7 +286,7 @@
 
 主要对象的结构如下
 
-![avatar](doc/level-cache.png)
+![avatar](level-cache.png)
 
 + Cache包含Meta和一个Device组成的数组
 + Meta用于存储item的基础信息和Aux信息，Meta被分成256个桶，对象按照key的第一个byte判断在哪个桶中。每个桶各自独立，有独立的锁，每次只锁定1/256的数据，减少批量删除和持久化操作对整个系统的影响
@@ -295,7 +295,7 @@
 + Auxiliary是一个由使用者实现的借口，方便调用者按照自身的业务逻辑进行批量删除等操作，每MetaBucket会实例化一个，由库保证线程安全
 
 
-![avatar](doc/device.png)
+![avatar](device.png)
 
 device的内部结构如上图，只以ＨDD为例画出一个，所有device具有相同的管理逻辑
 + device内主要由segments（处于buckets内）和store组成，
